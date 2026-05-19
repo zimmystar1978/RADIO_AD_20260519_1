@@ -34,5 +34,19 @@ video{
     <source src="26Mission_Radio_AD_0519.mp4" type="video/mp4">
 </video>
 
+<button id="playBtn">
+▶ 작전 시작
+</button>
+
+<script>
+const video = document.getElementById('video');
+const btn = document.getElementById('playBtn');
+
+btn.addEventListener('click', () => {
+    video.play();
+    btn.style.display = 'none';
+});
+</script>
+
 </body>
 </html>
