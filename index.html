@@ -3,57 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fullscreen Video Player</title>
 
 <style>
-body{
-    margin:0;
-    background:black;
-    overflow:hidden;
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
 }
 
-video{
-    width:100vw;
-    height:100vh;
-    object-fit:cover;
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    cursor: pointer;
 }
 
-#playBtn{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
+#playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-    background:rgba(0,0,0,0.7);
-    color:white;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
 
-    border:none;
-    padding:20px 40px;
+    border: none;
+    padding: 20px 40px;
 
-    font-size:24px;
-    border-radius:60px;
+    font-size: 24px;
+    border-radius: 60px;
 
-    z-index:10;
+    z-index: 10;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#playBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 </style>
 </head>
 
 <body>
 
-<video id="video" playsinline controls loop>
+
+<video id="video" playsinline loop>
     <source src="6th_Radio_AD_0526.mp4" type="video/mp4">
 </video>
 
 <button id="playBtn">
-▶ 작전 시작
+▶
 </button>
 
 <script>
 const video = document.getElementById('video');
 const btn = document.getElementById('playBtn');
 
+
 btn.addEventListener('click', () => {
     video.play();
-    btn.style.display = 'none';
+    btn.style.display = 'none'; 
+    video.controls = true;      
+});
+
+
+video.addEventListener('click', () => {
+    if (btn.style.display === 'none') { 
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
 });
 </script>
 
